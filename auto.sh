@@ -18,7 +18,6 @@ while true; do
             --availability-domain "$AVAILABILITY_DOMAIN" \
             --compartment-id "ocid1.tenancy.oc1..aaaaaaaavy6r7pugxzprwqrifbolqze5kyza66plpnm4eimnbtteblk6mrtq" \
             --shape "VM.Standard.A1.Flex" \
-            --subnet-id "${oci_core_subnet.generated_oci_core_subnet.id}" \
             --assign-private-dns-record true \
             --assign-public-ip false \
             --agent-config '{"is_management_disabled": false, "is_monitoring_disabled": false, "plugins_config": [
