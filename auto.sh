@@ -36,7 +36,7 @@ while true; do
             --image-id "ocid1.image.oc1.ap-batam-1.aaaaaaaadsfyvcej67zomeunleaopmabegbsytcbfiwdmfwh6klbd5zotlha" \
             --instance-options '{"are_legacy_imds_endpoints_disabled": false}' \
             --shape-config '{"memory_in_gbs": 24, "ocpus": 4}' \
-            --ssh-authorized-keys-file "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoUqDvTHJAmAtW8guODJlqY4e3AyEXSFXfMiRbFKEO33j0nbqOCZ9/oRw12EEALkTb6D/ubHyXzOvy0VLuU04E1z01dBsJHWqZrrNKlkWXnrMdbt0I321wvHwI8ZOrRrE3WNIbhFsgTHmMAoAzbw+lQKtxKp/wMyZ7BBaC8FMuNTRZx4JX6KLnZO1QWrP5ETQk3lv9PqCQshv4KDPVk4sdKXt34Vjza2TvbS6aiH/FJ21DIyEpwiw/st5oo5J436N5Ros7YA4Dx4G7xLRqC2lW0DFmqWwQDhwdbNyyet+bEOf1GLXdRBYPCx4lZjrkEySlxjD787tK922SLj7DlPal ssh-key-2026-10-24"
+            --ssh-authorized-keys-file ./ssh-vmku.pub
 
         if [ $? -eq 0 ]; then
             echo "Instance created successfully in $AVAILABILITY_DOMAIN."
