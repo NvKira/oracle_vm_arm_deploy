@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define the availability domains ----------------------------------------- <UPDATE> -------------------------------------------
-AD1="bgAk:EU-FRANKFURT-1-AD-1"
-AD2="bgAk:EU-FRANKFURT-1-AD-2"
-AD3="bgAk:EU-FRANKFURT-1-AD-3"
+AD1="bgAk:AP-BATAM-1-AD-1"
+AD2="bgAk:AP-BATAM-1-AD-2"
+AD3="bgAk:AP-BATAM-1-AD-3"
 
 # Array to hold availability domains
 AVAILABILITY_DOMAINS=("$AD1" "$AD2" "$AD3")
@@ -16,11 +16,11 @@ while true; do
 	# ------------------------------------------------------------ <UPDATE AS NECESSARY> ------------------------------------
         oci compute instance launch \
             --availability-domain "$AVAILABILITY_DOMAIN" \
-            --compartment-id "ocid1.compartment.oc1..aaaaaaaary***EXAMPLE*****UPDATE_ID***vlsopz6lq" \
+            --compartment-id "ocid1.tenancy.oc1..aaaaaaaavy6r7pugxzprwqrifbolqze5kyza66plpnm4eimnbtteblk6mrtq" \
             --shape "VM.Standard.A1.Flex" \
-            --subnet-id "ocid1.subnet.oc1.eu-frankfurt-1.aaaaaaaahigcy*****EXAMPLE******UPDATE_ID******73qbizvxzjzjq" \
+            --subnet-id "${oci_core_subnet.generated_oci_core_subnet.id}" \
             --assign-private-dns-record true \
-            --assign-public-ip true \
+            --assign-public-ip false \
             --agent-config '{"is_management_disabled": false, "is_monitoring_disabled": false, "plugins_config": [
                 {"desired_state": "DISABLED", "name": "Vulnerability Scanning"},
                 {"desired_state": "DISABLED", "name": "Management Agent"},
@@ -33,11 +33,11 @@ while true; do
                 {"desired_state": "DISABLED", "name": "Block Volume Management"},
                 {"desired_state": "DISABLED", "name": "Bastion"}]}' \
             --availability-config '{"recovery_action": "RESTORE_INSTANCE"}' \
-            --display-name "<PUT_YOUR_VM_NAME>" \
-            --image-id "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaausfft7********EXAMPLE*********UPDATE_ID*********qf5birrjk2zzcxv3sea" \
+            --display-name "vmku" \
+            --image-id "ocid1.image.oc1.ap-batam-1.aaaaaaaadsfyvcej67zomeunleaopmabegbsytcbfiwdmfwh6klbd5zotlha" \
             --instance-options '{"are_legacy_imds_endpoints_disabled": false}' \
             --shape-config '{"memory_in_gbs": 24, "ocpus": 4}' \
-            --ssh-authorized-keys-file ./vm/id_rsa.pub
+            --ssh-authorized-keys-file "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoUqDvTHJAmAtW8guODJlqY4e3AyEXSFXfMiRbFKEO33j0nbqOCZ9/oRw12EEALkTb6D/ubHyXzOvy0VLuU04E1z01dBsJHWqZrrNKlkWXnrMdbt0I321wvHwI8ZOrRrE3WNIbhFsgTHmMAoAzbw+lQKtxKp/wMyZ7BBaC8FMuNTRZx4JX6KLnZO1QWrP5ETQk3lv9PqCQshv4KDPVk4sdKXt34Vjza2TvbS6aiH/FJ21DIyEpwiw/st5oo5J436N5Ros7YA4Dx4G7xLRqC2lW0DFmqWwQDhwdbNyyet+bEOf1GLXdRBYPCx4lZjrkEySlxjD787tK922SLj7DlPal ssh-key-2026-10-24"
 
         if [ $? -eq 0 ]; then
             echo "Instance created successfully in $AVAILABILITY_DOMAIN."
