@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define the availability domains ----------------------------------------- <UPDATE> -------------------------------------------
-AD1="bgAk:AP-BATAM-1-AD-1"
-AD2="bgAk:AP-BATAM-1-AD-2"
-AD3="bgAk:AP-BATAM-1-AD-3"
+AD1="AP-BATAM-1-AD-1"
+AD2="AP-BATAM-1-AD-2"
+AD3="AP-BATAM-1-AD-3"
 
 # Array to hold availability domains
 AVAILABILITY_DOMAINS=("$AD1" "$AD2" "$AD3")
